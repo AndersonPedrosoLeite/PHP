@@ -1,0 +1,17 @@
+CREATE DATABASE aula;
+
+USE aula;
+
+CREATE TABLE pessoa (
+codpessoa INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(30) NOT NULL,
+email VARCHAR(30) NOT NULL,
+cpf VARCHAR(11)NOT NULL,
+senha VARCHAR(15) DEFAULT '12345' NOT NULL,
+imagem VARCHAR(50) DEFAULT 'foto.png' NOT NULL,
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+insert into pessoa (nome,email,cpf) values ('Maria da Silva','maria@gmail.com','12345678901');
+insert into pessoa (nome,email,cpf) values ('João da Silva','joao@gmail.com','12345678901');
+insert into pessoa (nome,email,cpf) values ('José da Silva','jose@gmail.com','12345678901');
