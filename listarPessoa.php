@@ -9,7 +9,7 @@
 <main>
     <?php
         $email = $_SESSION['email'];
-        $usuarios = listarUsuarios($conexao);
+        $usuarios = listarPessoa($conexao);
         if(empty($usuarios)){
             ?>
                 <section>
