@@ -1,0 +1,20 @@
+
+
+CREATE TABLE produto (
+codproduto INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(50) NOT NULL,
+descricao VARCHAR (100) NOT NULL,
+quantidade VARCHAR (15) NOT NULL,
+imagem VARCHAR(50) DEFAULT 'produto.png' NOT NULL,
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+insert into produto (nome,descricao,quantidade) values ('boné','vermelho',2);
+insert into produto (nome,descricao,quantidade) values ('camiseta','preta',4);
+insert into produto (nome,descricao,quantidade) values ('calça jeans','azul marinho',1);
+
+
+
+CREATE TABLE categorias(
+codcategoria INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(30) NOT NULL);
