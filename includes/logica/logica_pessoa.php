@@ -98,4 +98,74 @@ $mensagem = "O usuário {$pessoa['nome']} logou no sistema em:
 
             header('location:../../alterarPerfil.php');
     }
+#ENVIAR EMAIL
+//identificação para a chamada da classe
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+
+if (isset($_POST['enviar'])) 
+{
+	
+$nome = $_POST['nome'];
+
+$email = $_POST['email'];
+
+$mensagem = $_POST['mensagem'];
+
+$assunto="Teste de DAW";
+
+$email_resposta = $_POST['email_resposta'];
+
+        require "./PHPMailer/src/PHPMailer.php";
+        require "./PHPMailer/src/SMTP.php";
+        require "./PHPMailer/src/Exception.php";
+        $mail = new PHPMailer();
+
+
+        $mail->isSMTP();
+
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+        $mail->SMTPDebug = 2;
+        $mail->SMTPAuth = true;
+
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true,
+            ]
+        ];
+
+        $mail->Username = 'dawexemplo2014@gmail.com';
+        $mail->Password = 'crelffsizlgmecrr';
+
+        $mail->setFrom('dawexemplo2014@gmail.com','Adm Site');
+
+        $mail->addAddress($email, $nome );
+
+        $mail->CharSet = "utf-8";
+
+        if($email_resposta)
+        {
+            $mail->addReplyTo($email_resposta);
+        }
+
+        $mail->Subject = $assunto;
+
+        $mail->Body = $mensagem;
+
+        $mail->isHTML(true);
+
+        if (!$mail->send()) {
+            echo "não funcionou";
+        } else {
+            echo "Email promocional enviado";
+        }
+        $array = array($nome, $email,$mensagem, $assunto, $assunto, $email_resposta,$mail);
+        enviarPromocao($conexao, $array);
+        header('Location:../../index.php');
+}
 ?>

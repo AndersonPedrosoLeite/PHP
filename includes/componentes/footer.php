@@ -10,7 +10,7 @@
                         <li><a href="/PDO_versao2/pesquisarProduto.php">Pesquisar Produto</a></li>
                         <li><a href="/PDO_versao2/alterarPerfil.php">Alterar Perfil</a></li>       
                         <li><a href="/PDO_versao2/excluirConta.php">Excluir Conta</a></li>
-                        <li><a href="/PDO_versao2/exemplo_email/formulario_email.php">Enviar promoção</a></li>                              
+                        <li><a href="/PDO_versao2/includes/logica/formulario_email.php">Enviar promoção</a></li>                              
                                 <form action="includes/logica/logica_pessoa.php" method="post">
                                         <input type="submit" name="sair" value="Sair">
                                 </form>
