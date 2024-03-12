@@ -1,7 +1,6 @@
 <?php
  include_once('includes/componentes/cabecalho.php');
 ?>
-    <link rel="stylesheet" href="assets/css/index.css">
     <title>Cadastrar Usuário</title>
 </head>
 <body>

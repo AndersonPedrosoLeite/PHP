@@ -84,12 +84,14 @@ function buscarPessoa($conexao, $array)
 function acessarPessoa($conexao, $array)
 {
     try {
-        $query = $conexao->prepare("select * from pessoa where email=? and senha=?");
+        $query = $conexao->prepare("select * from pessoa where email=? and status=true");
         if ($query->execute($array)) {
             $pessoa = $query->fetch(); //coloca os dados num array $pessoa
-            if ($pessoa) {
+            if(password_verify($senha, $pessoa['senha']))
+            {  
                 return $pessoa;
-            } else {
+            }
+             else {
                 return false;
             }
         } else {

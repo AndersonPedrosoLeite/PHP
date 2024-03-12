@@ -13,6 +13,7 @@
     </form>
     </section>
 </main>
+<a href="cadastrarPessoa.php">Novo Usuário</a>
 <div id='msg'>
 <?php
 session_start();

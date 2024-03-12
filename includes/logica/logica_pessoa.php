@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\SMTP;
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $cpf = $_POST['cpf'];
-        $senha = $_POST['senha'];
+        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         $array = array($nome, $email, $cpf, $senha);
         $retorno=inserirPessoa($conexao, $array);
         if(!$retorno)
@@ -20,7 +20,7 @@ use PHPMailer\PHPMailer\SMTP;
 #ENTRAR
     if(isset($_POST['entrar'])){
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha= $_POST['senha'];
         $array = array($email, $senha);
         $pessoa = acessarPessoa($conexao,$array);
         if($pessoa){
