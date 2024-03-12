@@ -31,7 +31,7 @@ include_once('includes/logica/conecta.php');
                     <p>Nome: <?php echo $pessoa['nome']; ?></p>
                     <p>Email <?php echo $pessoa['email']; ?></p>
                     <p>CPF: <?php echo $pessoa['cpf']; ?></p>
-                    <p>Imagem: <img src="imagens/<?php echo $pessoa['imagem'];?>" width='100px' height='100px'/></p>
+                    <p>Imagem: <img src="/imagens/<?php echo $pessoa['imagem'];?>" width='100px' height='100px'/></p>
                     
                     <form action="includes/logica/logica_pessoa.php" method="post">
                         <button type="submit" name="editar" value="<?php echo $pessoa['codpessoa']; ?>"> Editar </button>

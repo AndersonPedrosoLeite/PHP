@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
     require_once('conecta.php');
     require_once('funcoes_pessoa.php');
 #CADASTRO PESSOA
@@ -99,26 +101,20 @@ $mensagem = "O usuário {$pessoa['nome']} logou no sistema em:
             header('location:../../alterarPerfil.php');
     }
 #ENVIAR EMAIL
-//identificação para a chamada da classe
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
+
 
 if (isset($_POST['ENVIAR'])) 
 {
 	
-$nome = $_POST['nome'];
-
-$email = $_POST['email'];
-
 $mensagem = $_POST['mensagem'];
 
-$assunto="Teste de DAW";
+$assunto="Promoção do dia";
 
-$email_resposta = $_POST['email_resposta'];
 
         require "./PHPMailer/src/PHPMailer.php";
         require "./PHPMailer/src/SMTP.php";
         require "./PHPMailer/src/Exception.php";
+        
         $mail = new PHPMailer();
 
 
@@ -143,15 +139,18 @@ $email_resposta = $_POST['email_resposta'];
         $mail->Password = 'crelffsizlgmecrr';
 
         $mail->setFrom('dawexemplo2014@gmail.com','Adm Site');
+        $pessoas=listarPessoa($conexao);
+        foreach($pessoas as $pessoa){
+            $email = $pessoa['email'];
+            $nome = $pessoa['nome'];
+            $mail->addAddress($email, $nome );
+        }
 
-        $mail->addAddress($email, $nome );
+        
+
 
         $mail->CharSet = "utf-8";
 
-        if($email_resposta)
-        {
-            $mail->addReplyTo($email_resposta);
-        }
 
         $mail->Subject = $assunto;
 
@@ -164,8 +163,8 @@ $email_resposta = $_POST['email_resposta'];
         } else {
             echo "Email promocional enviado";
         }
-        $array = array($nome, $email,$mensagem, $assunto, $email_resposta,$mail);
-        enviarPromocao($conexao, $array);
+    
+       
         header('Location:../../index.php');
 }
 ?>
