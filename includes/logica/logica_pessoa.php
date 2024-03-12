@@ -103,7 +103,7 @@ $mensagem = "O usuário {$pessoa['nome']} logou no sistema em:
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
 
-if (isset($_POST['enviar'])) 
+if (isset($_POST['ENVIAR'])) 
 {
 	
 $nome = $_POST['nome'];
@@ -164,7 +164,7 @@ $email_resposta = $_POST['email_resposta'];
         } else {
             echo "Email promocional enviado";
         }
-        $array = array($nome, $email,$mensagem, $assunto, $assunto, $email_resposta,$mail);
+        $array = array($nome, $email,$mensagem, $assunto, $email_resposta,$mail);
         enviarPromocao($conexao, $array);
         header('Location:../../index.php');
 }

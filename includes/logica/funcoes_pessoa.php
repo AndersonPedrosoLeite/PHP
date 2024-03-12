@@ -120,24 +120,13 @@
       }  
     }
     function enviarPromocao($conexao,$array){
-        try {
-        $query = $conexao->prepare("select * from pessoa where email=?");
-        if($query->execute($array)){
-            $pessoa = $query->fetchAll(); //coloca os dados num array $pessoa
-          if ($pessoa)
-            {  
-                return $pessoa;
-            }
-        else
-            {
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
-         }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-      }  
+            try {
+              $query = $conexao->prepare("SELECT * FROM pessoa");      
+              $query->execute();
+              $pessoas = $query->fetchAll();
+              return $pessoas;
+            }catch(PDOException $e) {
+                  echo 'Error: ' . $e->getMessage();
+            }  
     }
    ?>
